@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Space Grotesk", ui-sans-serif, system-ui;
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+  --color-canvas-base: #ffffff;
+  --color-canvas-alt: #f9fafb;
+  --color-ink-dark: #000000;
+  --color-ink-muted: #6b7280;
+  --color-accent-primary: #000000;
+  --color-accent-secondary: #000000;
+}
+
+::selection {
+  background-color: black;
+  color: white;
+}

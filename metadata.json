@@ -1,0 +1,6 @@
+{
+  "name": "CottonCanvas",
+  "description": "A premium cotton apparel clothing website with home, about us, products, blog, and contact pages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
