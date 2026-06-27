@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cottoncanvascloths.netlify.app/sitemap.xml
+Sitemap: https://cottoncanvascloths.vercel.app/sitemap.xml
