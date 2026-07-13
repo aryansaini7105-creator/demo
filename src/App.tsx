@@ -8,6 +8,7 @@ const About = React.lazy(() => import('./pages/About'));
 const Products = React.lazy(() => import('./pages/Products'));
 const Blog = React.lazy(() => import('./pages/Blog'));
 const Contact = React.lazy(() => import('./pages/Contact'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="products" element={<Products />} />
               <Route path="blog" element={<Blog />} />
               <Route path="contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </React.Suspense>
