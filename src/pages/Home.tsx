@@ -4,6 +4,9 @@ import { ArrowRight, Leaf, ShieldCheck, Truck, Tag } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useCart } from '../CartContext';
 import { SEO } from '../components/SEO';
+import FAQSection from '../components/FAQSection';
+import { faqs } from '../data/faqData';
+import { getOrganizationSchema, getWebSiteSchema, getFAQPageSchema } from '../utils/schemaGenerator';
 
 export default function Home() {
   const { addToCart } = useCart();
@@ -20,23 +23,19 @@ export default function Home() {
     setTimeout(() => setAddedFeatured(false), 1500);
   };
 
-  const homeSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "CottonCanvas",
-    "url": "https://cottoncanvascloths.netlify.app/",
-    "description": "Everyday Comfort. Timeless Style. Premium cotton clothing for men, women and kids.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CottonCanvas"
-    }
-  };
+  const homeSchema = [
+    getWebSiteSchema(),
+    getOrganizationSchema(),
+    getFAQPageSchema(faqs.slice(0, 8))
+  ];
 
   return (
     <div className="flex flex-col bg-white text-black">
       <SEO 
-        title="Cotton Canvas - Premium Cotton Clothing & Fashion" 
-        description="Discover premium quality clothing at Cotton Canvas. Explore stylish apparel, modern fashion trends, and comfortable everyday wear for every lifestyle." 
+        title="CottonCanvas — Premium Sustainable Cotton Clothing & Fashion" 
+        description="Discover pure organic cotton clothing designed for everyday comfort and timeless style. Explore our ethical, sustainable fashion collection for men, women & kids." 
+        canonical="/"
+        keywords="sustainable cotton clothing, organic cotton apparel, ethical fashion, pure cotton shirts, cotton dresses, eco clothing brand"
         schema={homeSchema}
       />
       {/* Hero Section */}
@@ -119,15 +118,16 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Category 1 */}
-            <div className="group relative overflow-hidden bg-white border border-gray-200 cursor-pointer">
+            <NavLink to="/products" className="group relative overflow-hidden bg-white border border-gray-200 block">
               <div className="aspect-[3/4] w-full relative">
                 <img 
                   src="https://textile-export.b-cdn.net/images/800/20231101/16988319171647512920-Structured%2003%20(5).png" 
-                  alt="Men's Cotton Clothing" 
+                  alt="Men's Cotton Clothing Collection" 
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                   width={400}
                   height={533}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-8 bg-white border-t border-gray-200">
@@ -139,19 +139,20 @@ export default function Home() {
                   Shop Men <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </div>
               </div>
-            </div>
+            </NavLink>
 
             {/* Category 2 */}
-            <div className="group relative overflow-hidden bg-white border border-gray-200 cursor-pointer">
+            <NavLink to="/products" className="group relative overflow-hidden bg-white border border-gray-200 block">
               <div className="aspect-[3/4] w-full relative">
                 <img 
                   src="https://kavyastyleplus.com/cdn/shop/collections/Crown_20Sayuri_20Indo_20Western_20Pair_20_282_29.jpg?v=1756291988&width=400" 
-                  alt="Women's Cotton Clothing" 
+                  alt="Women's Cotton Clothing Collection" 
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                   width={400}
                   height={533}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-8 bg-white border-t border-gray-200">
@@ -163,19 +164,20 @@ export default function Home() {
                   Shop Women <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </div>
               </div>
-            </div>
+            </NavLink>
 
             {/* Category 3 */}
-            <div className="group relative overflow-hidden bg-white border border-gray-200 cursor-pointer">
+            <NavLink to="/products" className="group relative overflow-hidden bg-white border border-gray-200 block">
               <div className="aspect-[3/4] w-full relative">
                 <img 
                   src="https://www.suratsuit.in/product-img/Kid-s-Clothing-Set-Baba-Suit-B-1688391083.jpeg" 
-                  alt="Kids' Cotton Clothing" 
+                  alt="Kids' Cotton Clothing Collection" 
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                   width={400}
                   height={533}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-8 bg-white border-t border-gray-200">
@@ -187,7 +189,7 @@ export default function Home() {
                   Shop Kids <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </div>
               </div>
-            </div>
+            </NavLink>
           </div>
         </div>
       </section>
@@ -291,6 +293,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Frequently Asked Questions Section */}
+      <FAQSection />
+
       {/* Newsletter Section */}
       <section className="py-24 bg-black text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -299,11 +304,15 @@ export default function Home() {
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto opacity-80">
             Receive exclusive offers, fashion tips, and early access to new collections.
           </p>
-          <form className="flex flex-col sm:flex-row max-w-md mx-auto gap-3">
+          <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row max-w-md mx-auto gap-3">
+            <label htmlFor="home-newsletter-email" className="sr-only">Email Address for Newsletter</label>
             <input 
+              id="home-newsletter-email"
+              name="email"
               type="email" 
               placeholder="Email Address" 
               aria-label="Email Address for newsletter"
+              autoComplete="email"
               className="flex-grow px-5 py-3 bg-gray-800 border border-gray-800 text-white placeholder-white/50 focus:outline-none focus:border-white transition-colors"
               required
             />

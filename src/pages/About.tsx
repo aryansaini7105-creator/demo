@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { SEO } from '../components/SEO';
+import { getOrganizationSchema, getBreadcrumbSchema, BASE_URL } from '../utils/schemaGenerator';
 
 export default function About() {
   const team = [
@@ -26,24 +27,35 @@ export default function About() {
     }
   ];
 
-  const aboutSchema = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About CottonCanvas",
-    "url": "https://cottoncanvascloths.netlify.app/about",
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "CottonCanvas",
-      "description": "CottonCanvas creates premium cotton apparel focused on comfort, durability and timeless fashion.",
-      "url": "https://cottoncanvascloths.netlify.app/"
-    }
-  };
+  const aboutSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About CottonCanvas",
+      "url": `${BASE_URL}/about`,
+      "description": "Learn about CottonCanvas, our sustainable clothing story, organic fabric benefits, ethical craftsmanship, and core team.",
+      "mainEntity": {
+        ...getOrganizationSchema(),
+        "employee": team.map(member => ({
+          "@type": "Person",
+          "name": member.name,
+          "jobTitle": member.role,
+          "image": member.image
+        }))
+      }
+    },
+    getBreadcrumbSchema([
+      { name: "About Us", path: "/about" }
+    ])
+  ];
 
   return (
     <div className="bg-white text-black">
       <SEO 
-        title="About Cotton Canvas - Our Cotton Clothing Story"
-        description="Learn about Cotton Canvas, our mission, values, and commitment to delivering premium quality clothing with style, comfort, and craftsmanship."
+        title="About CottonCanvas — Ethical Sustainable Cotton Clothing Story"
+        description="Learn about CottonCanvas, our mission, values, and commitment to delivering certified organic cotton clothing with unmatched style, comfort, and craftsmanship."
+        canonical="/about"
+        keywords="about cottoncanvas, organic cotton clothing brand, ethical fashion story, sustainable textile craftsmanship, eco apparel vision"
         schema={aboutSchema}
       />
       {/* Hero */}
@@ -84,6 +96,7 @@ export default function About() {
                   width={1200}
                   height={900}
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

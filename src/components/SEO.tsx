@@ -1,23 +1,101 @@
 import { useEffect } from 'react';
 
-interface SEOProps {
+export interface SEOProps {
   title: string;
   description: string;
+  canonical?: string;
+  type?: 'website' | 'article' | 'product';
+  image?: string;
+  keywords?: string;
   schema?: any | any[];
+  noindex?: boolean;
 }
 
-export function SEO({ title, description, schema }: SEOProps) {
+const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&h=630&q=80";
+const SITE_NAME = "CottonCanvas";
+const DEFAULT_ORIGIN = "https://cottoncanvascloths.vercel.app";
+
+function setOrCreateMeta(selector: string, attrName: string, attrValue: string, content: string) {
+  let element = document.querySelector(selector);
+  if (!element) {
+    element = document.createElement('meta');
+    element.setAttribute(attrName, attrValue);
+    document.head.appendChild(element);
+  }
+  element.setAttribute('content', content);
+}
+
+function setOrCreateLink(rel: string, href: string) {
+  let link = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = rel;
+    document.head.appendChild(link);
+  }
+  link.href = href;
+}
+
+export function SEO({
+  title,
+  description,
+  canonical,
+  type = 'website',
+  image = DEFAULT_IMAGE,
+  keywords,
+  schema,
+  noindex = false,
+}: SEOProps) {
   useEffect(() => {
+    // 1. Page Title
     document.title = title;
+
+    // 2. Canonical URL calculation
+    const origin = typeof window !== 'undefined' && window.location.origin && window.location.origin !== 'null'
+      ? window.location.origin
+      : DEFAULT_ORIGIN;
+    const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
     
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
+    let canonicalUrl: string;
+    if (canonical) {
+      canonicalUrl = canonical.startsWith('http') ? canonical : `${origin}${canonical.startsWith('/') ? canonical : `/${canonical}`}`;
+    } else {
+      canonicalUrl = `${origin}${pathname === '/' ? '' : pathname}`;
     }
-    metaDescription.setAttribute('content', description);
-  }, [title, description]);
+
+    // Strip trailing slash if present (except root domain)
+    if (canonicalUrl.endsWith('/') && canonicalUrl.length > origin.length + 1) {
+      canonicalUrl = canonicalUrl.slice(0, -1);
+    }
+
+    setOrCreateLink('canonical', canonicalUrl);
+
+    // 3. Standard Meta Description, Keywords & Robots
+    setOrCreateMeta('meta[name="description"]', 'name', 'description', description);
+    
+    const pageKeywords = keywords || "organic cotton clothing, sustainable fashion, pure cotton apparel, ethical clothing brand, natural fabric";
+    setOrCreateMeta('meta[name="keywords"]', 'name', 'keywords', pageKeywords);
+
+    const robotsContent = noindex 
+      ? 'noindex, nofollow' 
+      : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+    setOrCreateMeta('meta[name="robots"]', 'name', 'robots', robotsContent);
+
+    // 4. OpenGraph Meta Tags
+    setOrCreateMeta('meta[property="og:title"]', 'property', 'og:title', title);
+    setOrCreateMeta('meta[property="og:description"]', 'property', 'og:description', description);
+    setOrCreateMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
+    setOrCreateMeta('meta[property="og:type"]', 'property', 'og:type', type);
+    setOrCreateMeta('meta[property="og:image"]', 'property', 'og:image', image);
+    setOrCreateMeta('meta[property="og:site_name"]', 'property', 'og:site_name', SITE_NAME);
+    setOrCreateMeta('meta[property="og:locale"]', 'property', 'og:locale', 'en_US');
+
+    // 5. Twitter / X Cards
+    setOrCreateMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
+    setOrCreateMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
+    setOrCreateMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
+    setOrCreateMeta('meta[name="twitter:image"]', 'name', 'twitter:image', image);
+    setOrCreateMeta('meta[name="twitter:site"]', 'name', 'twitter:site', '@cottoncanvas');
+  }, [title, description, canonical, type, image, keywords, noindex]);
 
   useEffect(() => {
     if (!schema) return;

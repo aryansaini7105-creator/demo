@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Host
+Host: https://cottoncanvascloths.vercel.app
+
+# Sitemaps
 Sitemap: https://cottoncanvascloths.vercel.app/sitemap.xml

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import { getOrganizationSchema, getBreadcrumbSchema, BASE_URL } from '../utils/schemaGenerator';
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -9,25 +10,36 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitted(true);
   };
-  const contactSchema = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact CottonCanvas",
-    "url": "https://cottoncanvascloths.netlify.app/contact",
-    "description": "Contact CottonCanvas for product inquiries, customer support and business information."
-  };
+
+  const contactSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact CottonCanvas Customer Support",
+      "url": `${BASE_URL}/contact`,
+      "description": "Contact CottonCanvas for sustainable organic cotton apparel inquiries, order support, and wholesale partnerships."
+    },
+    getBreadcrumbSchema([
+      { name: "Contact Us", path: "/contact" }
+    ]),
+    getOrganizationSchema()
+  ];
 
   return (
     <div className="bg-gray-50 min-h-screen pb-24 text-black">
       <SEO 
-        title="Contact Cotton Canvas - Cotton Clothing Customer Support"
-        description="Get in touch with Cotton Canvas for product inquiries, customer support, collaborations, or general questions. We're here to help."
-        schema={contactSchema}
+        title="Contact CottonCanvas — Customer Support & Wholesale Inquiries"
+        description="Get in touch with CottonCanvas. Inquire about pure organic cotton clothing, custom printing, order tracking, bulk purchase, and retail partnerships."
+        canonical="/contact"
+        keywords="contact cotton canvas, cotton clothing customer care, organic clothing supplier, bulk cotton apparel, custom cotton printing contact"
+        schema={contactSchemas}
       />
       <section className="bg-white py-24 border-b border-gray-200 mb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
-          <p className="text-[10px] font-bold uppercase tracking-[.3em] opacity-60 mb-4 text-black">Inquiries</p>
-          <h1 className="text-4xl md:text-5xl font-serif text-black mb-6">Ethical Cotton Clothing Customer Service</h1>
+          <p className="text-[10px] font-bold uppercase tracking-[.3em] opacity-60 mb-4 text-black">Inquiries & Support</p>
+          <h1 className="text-4xl md:text-5xl font-serif text-black mb-6">
+            Ethical Cotton Clothing Customer Service
+          </h1>
           <h2 className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mt-4 font-light">
             Inquire About Customer Support, Bulk Custom Orders & Cotton Clothing Care Solutions
           </h2>
@@ -50,21 +62,11 @@ export default function Contact() {
                     <MapPin className="w-4 h-4 text-white" />
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-black">Address</h3>
-                    <p className="mt-2 text-gray-700 leading-relaxed">
-                      Aryan<br />
-                      Yamunanagar 135001
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-black mb-1">Our Studio</h3>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      CottonCanvas Headquarters<br />
+                      Main Market Road, Yamunanagar, Haryana 135001, India
                     </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 mt-1 bg-black p-2">
-                    <Phone className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-black">Phone</h3>
-                    <p className="mt-2 text-gray-700">7988227604</p>
                   </div>
                 </div>
 
@@ -73,8 +75,20 @@ export default function Contact() {
                     <Mail className="w-4 h-4 text-white" />
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-black">Email</h3>
-                    <p className="mt-2 text-gray-700">aryansaini7105@gmail.com</p>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-black mb-1">Email Us</h3>
+                    <p className="text-gray-700 text-sm">aryansaini7105@gmail.com</p>
+                    <p className="text-gray-500 text-xs mt-1">Typical response time: Under 12 hours</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mt-1 bg-black p-2">
+                    <Phone className="w-4 h-4 text-white" />
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-black mb-1">Phone & WhatsApp</h3>
+                    <p className="text-gray-700 text-sm">+91 7988227604</p>
+                    <p className="text-gray-500 text-xs mt-1">Available Mon–Sat: 9:00 AM – 7:00 PM IST</p>
                   </div>
                 </div>
 
@@ -83,94 +97,107 @@ export default function Contact() {
                     <Clock className="w-4 h-4 text-white" />
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-[10px] font-bold uppercase tracking-widest text-black">Business Hours</h3>
-                    <ul className="mt-2 text-gray-700 space-y-2">
-                      <li className="flex justify-between w-48 border-b border-gray-200 pb-1"><span>Mon–Fri</span> <span>9am–6pm</span></li>
-                      <li className="flex justify-between w-48 border-b border-gray-200 pb-1"><span>Saturday</span> <span>10am–4pm</span></li>
-                      <li className="flex justify-between w-48 pb-1 text-gray-600"><span>Sunday</span> <span>Closed</span></li>
-                    </ul>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-black mb-1">Operating Hours</h3>
+                    <p className="text-gray-700 text-sm">
+                      Monday – Saturday: 9:00 AM – 7:00 PM IST<br />
+                      Sunday: Closed (Online orders operate 24/7)
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-50 border border-gray-200 p-10 shadow-inner">
-              <h2 className="text-2xl font-serif text-black mb-6">Frequently Asked Questions</h2>
-              <div className="space-y-6">
+            <div className="bg-white border border-gray-200 p-8 shadow-sm">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-black mb-4">Frequently Asked Questions</h3>
+              <div className="space-y-4 text-sm">
                 <div>
+                  <h4 className="font-bold text-black mb-1">What are your typical shipping times?</h4>
+                  <p className="text-gray-600">Standard domestic deliveries take 3–5 business days. Express shipping is available at checkout.</p>
+                </div>
+                <div className="pt-3 border-t border-gray-100">
                   <h4 className="font-bold text-black mb-1">What is your return policy?</h4>
-                  <p className="text-gray-700 text-sm">Returns are accepted within 30 days of purchase.</p>
+                  <p className="text-gray-600">We offer a 30-day hassle-free exchange and return window for unwashed, unworn garments with original tags intact.</p>
                 </div>
-                <div>
-                  <h4 className="font-bold text-black mb-1">Do you offer international shipping?</h4>
-                  <p className="text-gray-700 text-sm">Yes, we ship to selected countries worldwide.</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-black mb-1">How can I track my order?</h4>
-                  <p className="text-gray-700 text-sm">Tracking information is sent via email after your order is shipped.</p>
+                <div className="pt-3 border-t border-gray-100">
+                  <h4 className="font-bold text-black mb-1">Do you offer bulk wholesale pricing?</h4>
+                  <p className="text-gray-600">Yes! Use the contact form to request our wholesale catalog and bulk purchase price tiers.</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white border border-gray-200 p-10 shadow-sm relative">
-             <div className="absolute top-0 left-0 w-full h-1 bg-black"></div>
-            
+          <div className="bg-white border border-gray-200 p-10 shadow-sm flex flex-col justify-center">
             {isSubmitted ? (
-               <div className="h-full flex flex-col items-center justify-center space-y-6 py-12 text-center">
-                 <CheckCircle className="w-16 h-16 text-black mb-2" />
-                 <h2 className="text-2xl font-serif text-black">Message Sent</h2>
-                 <p className="text-gray-700">Thank you for reaching out! Our team will get back to you within 24 hours.</p>
-                 <button 
-                   onClick={() => setIsSubmitted(false)}
-                   className="mt-4 px-6 py-3 border border-black text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
-                 >
-                   Send Another Message
-                 </button>
-               </div>
+              <div className="text-center py-16">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-black text-white mb-6">
+                  <CheckCircle className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-serif text-black mb-3">Message Received</h3>
+                <p className="text-gray-600 text-sm max-w-sm mx-auto mb-8">
+                  Thank you for reaching out to CottonCanvas. A member of our customer care team will respond to you shortly.
+                </p>
+                <button 
+                  type="button"
+                  onClick={() => setIsSubmitted(false)}
+                  className="inline-block bg-black text-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
+                >
+                  Send Another Message
+                </button>
+              </div>
             ) : (
               <>
-                <h2 className="text-2xl font-serif text-black mb-8">Send us a Message</h2>
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <h2 className="text-2xl font-serif text-black mb-2">Send Us a Message</h2>
+                <p className="text-gray-600 text-sm mb-8">
+                  Fill out the form below and our team will get back to you within 24 hours.
+                </p>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Full Name</label>
+                    <label htmlFor="contact-name" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Full Name</label>
                     <input 
                       type="text" 
-                      id="name" 
+                      id="contact-name" 
+                      name="name"
+                      autoComplete="name"
                       required
                       className="w-full border-0 border-b border-gray-200 bg-transparent px-0 py-2 text-black focus:ring-0 focus:border-black transition-colors"
                       placeholder="John Doe"
                     />
                   </div>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="email" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Email Address</label>
+                      <label htmlFor="contact-email" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Email Address</label>
                       <input 
                         type="email" 
-                        id="email" 
+                        id="contact-email" 
+                        name="email"
+                        autoComplete="email"
                         required
                         className="w-full border-0 border-b border-gray-200 bg-transparent px-0 py-2 text-black focus:ring-0 focus:border-black transition-colors"
                         placeholder="john@example.com"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Phone Number</label>
+                      <label htmlFor="contact-phone" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Phone Number</label>
                       <input 
                         type="tel" 
-                        id="phone" 
+                        id="contact-phone" 
+                        name="phone"
+                        autoComplete="tel"
                         className="w-full border-0 border-b border-gray-200 bg-transparent px-0 py-2 text-black focus:ring-0 focus:border-black transition-colors"
-                        placeholder="7988227604"
+                        placeholder="+91 7988227604"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Subject</label>
+                    <label htmlFor="contact-subject" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Subject</label>
                     <input 
                       type="text" 
-                      id="subject" 
+                      id="contact-subject" 
+                      name="subject"
                       required
                       className="w-full border-0 border-b border-gray-200 bg-transparent px-0 py-2 text-black focus:ring-0 focus:border-black transition-colors"
                       placeholder="How can we help you?"
@@ -178,9 +205,10 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Message</label>
+                    <label htmlFor="contact-message" className="block text-[10px] font-bold uppercase tracking-widest text-black mb-2">Message</label>
                     <textarea 
-                      id="message" 
+                      id="contact-message" 
+                      name="message"
                       required
                       rows={4}
                       className="w-full border border-gray-200 bg-white p-3 text-black focus:ring-1 focus:ring-black focus:border-black transition-colors resize-none"
@@ -190,7 +218,7 @@ export default function Contact() {
 
                   <button 
                     type="submit" 
-                    className="w-full bg-black text-white px-6 py-4 font-bold text-sm uppercase tracking-[.2em] shadow-lg hover:bg-opacity-90 transition-all focus:outline-none"
+                    className="w-full bg-black text-white px-6 py-4 font-bold text-sm uppercase tracking-[.2em] shadow-lg hover:bg-opacity-90 transition-all focus:outline-none cursor-pointer"
                   >
                     Send Message
                   </button>
