@@ -58,15 +58,12 @@ export default function Products() {
       {/* Header Banner */}
       <section className="bg-white py-24 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
-          <p className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-60 mb-4 text-black">The Monarch Collection</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-60 mb-4 text-black">Our Collection</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-black mb-6 tracking-tight">
-            Premium Certified Organic Cotton Clothing
+            All Products
           </h1>
-          <h2 className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed font-light mt-4">
-            Organic Cotton T-Shirts, Dresses, Joggers & Custom Printed Outfits
-          </h2>
-          <p className="text-sm md:text-base text-gray-600 max-w-xl mx-auto mt-4 leading-relaxed font-light">
-            Explore our curated line of premium certified eco-fashion garments. Styled with modern fluid silhouettes, premium material weights, and deep-seated sustainability.
+          <p className="text-sm md:text-base text-gray-600 max-w-xl mx-auto leading-relaxed font-light">
+            Explore our collection of premium cotton apparel designed for everyday comfort and timeless style.
           </p>
         </div>
       </section>
@@ -89,7 +86,7 @@ export default function Products() {
                 <div className="aspect-[4/5] relative overflow-hidden bg-gray-100">
                   <img 
                     src={product.image} 
-                    alt={`Premium sustainable ${product.name} crafted from soft certified cotton`} 
+                    alt={product.name} 
                     className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                     width={400}
@@ -98,13 +95,6 @@ export default function Products() {
                     decoding="async"
                   />
                   <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Subtle Top Tags */}
-                  {product.price > 80 && (
-                    <span className="absolute top-4 left-4 bg-black text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1">
-                      Royal Luxury
-                    </span>
-                  )}
                 </div>
                 
                 {/* Info and Actions Area */}
@@ -154,7 +144,7 @@ export default function Products() {
                     {/* Color Swatch Information */}
                     {product.colors && (
                       <div>
-                        <span className="text-[10px] font-bold text-black uppercase tracking-widest block mb-2">Royal Weave Tones</span>
+                        <span className="text-[10px] font-bold text-black uppercase tracking-widest block mb-2">Available Colors</span>
                         <div className="flex flex-wrap gap-2 text-xs text-gray-600 font-light">
                           {product.colors.join(' • ')}
                         </div>

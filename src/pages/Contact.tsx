@@ -36,15 +36,12 @@ export default function Contact() {
       />
       <section className="bg-white py-24 border-b border-gray-200 mb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
-          <p className="text-[10px] font-bold uppercase tracking-[.3em] opacity-60 mb-4 text-black">Inquiries & Support</p>
+          <p className="text-[10px] font-bold uppercase tracking-[.3em] opacity-60 mb-4 text-black">Get In Touch</p>
           <h1 className="text-4xl md:text-5xl font-serif text-black mb-6">
-            Ethical Cotton Clothing Customer Service
+            Contact Us
           </h1>
-          <h2 className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mt-4 font-light">
-            Inquire About Customer Support, Bulk Custom Orders & Cotton Clothing Care Solutions
-          </h2>
-          <p className="text-sm text-gray-600 max-w-xl mx-auto mt-4 leading-relaxed font-light">
-            We'd love to hear from you. Whether you have questions for our ethical cotton clothing representatives, need to buy organic cotton garments in bulk, or want to discuss custom organic cotton printing services, we are here to help.
+          <p className="text-sm md:text-base text-gray-600 max-w-xl mx-auto leading-relaxed font-light">
+            We'd love to hear from you. Whether you have questions about our products, orders, or sizing, we are here to help.
           </p>
         </div>
       </section>

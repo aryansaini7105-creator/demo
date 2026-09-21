@@ -61,13 +61,13 @@ export default function About() {
       <section className="bg-gray-50 py-24 border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
           <p className="text-[10px] uppercase tracking-[.3em] font-bold text-black mb-4">
-            Organic Integrity. Pure Design.
+            Our Mission
           </p>
           <h1 className="text-5xl font-serif text-black mb-6">
-            The Benefits of Organic Cotton Clothing
+            About CottonCanvas
           </h1>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto mt-4 leading-relaxed font-light">
-            Discover why our signature cotton apparel stands at the intersection of everyday skin comfort and ecological responsibility.
+            Crafting high-quality cotton essentials designed for comfort, style, and durability since 2021.
           </p>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function About() {
               <div className="aspect-[4/3] overflow-hidden border border-gray-200 relative z-10 bg-white p-4 shadow-sm">
                 <img 
                   src="/images/about_manufacturing.webp" 
-                  alt="A raw demonstration of ethical clothing production focusing on organic textiles" 
+                  alt="Cotton apparel manufacturing craftsmanship" 
                   className="object-cover w-full h-full"
                   width={1200}
                   height={900}
@@ -92,13 +92,13 @@ export default function About() {
             </div>
             <div className="lg:pr-8">
               <p className="text-[10px] font-bold uppercase tracking-widest text-black mb-3">Beginnings</p>
-              <h2 className="text-3xl font-serif text-black mb-8">Our Ethical Cotton Clothing Story</h2>
+              <h2 className="text-3xl font-serif text-black mb-8">Our Story</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Founded in 2021, CottonCanvas was created with a simple vision: to design pure organic cotton clothing and educate the market on <strong>how organic cotton is made</strong> to ensure unparalleled comfort and sustainability.
+                  Founded in 2021, CottonCanvas was created with a simple vision: to design timeless apparel made from the finest cotton, offering everyday comfort without compromising on style.
                 </p>
                 <p>
-                  What started as a small, conscious boutique has grown into a trusted advocate for clean cotton apparel practices. Our operations center on local, verified partners who share our dedication to <strong>ethical cotton clothing production</strong>. We believe that what you wear should look elegant, feel incredibly soft against your skin, and be made with absolute respect for nature.
+                  What started as a small boutique collection has grown into a community of conscious consumers who value comfort, durability, and clean aesthetic design. Every piece we make reflects our commitment to craftsmanship and responsible manufacturing.
                 </p>
               </div>
             </div>

@@ -85,15 +85,12 @@ export default function Blog() {
       />
       <section className="bg-white py-24 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
-          <p className="text-[10px] font-bold uppercase tracking-[.3em] opacity-60 mb-4 text-black">Journal & Guides</p>
+          <p className="text-[10px] font-bold uppercase tracking-[.3em] opacity-60 mb-4 text-black">Journal</p>
           <h1 className="text-4xl md:text-5xl font-serif text-black mb-6">
-            Sustainable Cotton Clothing Insights & Care Guides
+            Our Blog
           </h1>
-          <h2 className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mt-4 font-light">
-            Capsule Wardrobes, Organic Fabrics & Professional Cotton Clothing Care Articles
-          </h2>
-          <p className="text-sm text-gray-600 max-w-xl mx-auto mt-4 leading-relaxed font-light">
-            Essential insights on curated minimalist wardrobe essentials, care guides on how to wash cotton properly, and expert sustainable styling tips.
+          <p className="text-sm text-gray-600 max-w-xl mx-auto leading-relaxed font-light">
+            Stories, style guides, and care tips from the CottonCanvas team.
           </p>
         </div>
       </section>
@@ -116,7 +113,7 @@ export default function Blog() {
                   <div className="aspect-[16/10] overflow-hidden bg-white border-b border-gray-200 relative">
                     <img 
                       src={post.image} 
-                      alt={`Illustration and photography for article: ${post.title}`} 
+                      alt={post.title} 
                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                       width={400}
                       height={250}

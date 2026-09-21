@@ -14,7 +14,7 @@ export default function Home() {
   const handleAddFeatured = () => {
     addToCart({
       id: 999,
-      name: "Everyday Premium Cotton",
+      name: "Tailored Burgundy Coat",
       price: 2999,
       image: "/images/home_hero.webp"
     });
@@ -43,10 +43,10 @@ export default function Home() {
           <div className="space-y-4">
             <span className="inline-block px-3 py-1 bg-black text-white text-[10px] font-bold uppercase tracking-[.3em]">Premium Essentials</span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-black">
-              Pure Organic Cotton Clothing<br /><span className="italic text-black">Designed for Life</span>
+              Pure Cotton Clothing<br /><span className="italic text-black">Designed for Life</span>
             </h1>
             <p className="text-lg text-gray-700 max-w-md leading-relaxed">
-              Discover one of the finest sustainable cotton clothing brands bringing you premium, bio-derived eco friendly fashion. Blending comfort, quality, and contemporary style, CottonCanvas makes garments that feel as good as they look.
+              Discover pure cotton clothing designed for everyday comfort and timeless style. Explore our collection of premium essentials made with care and crafted to last.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -72,7 +72,7 @@ export default function Home() {
                src="/images/home_hero.webp" 
                fetchPriority="high"
                decoding="async"
-               alt="A woman modeling sustainable clothing brands premium organic cotton clothing" 
+               alt="Tailored burgundy coat with high standing collar" 
                className="object-cover w-full h-full opacity-90 transition-transform duration-500 hover:scale-105"
                width={800}
                height={1000}
@@ -80,8 +80,8 @@ export default function Home() {
              <div className="absolute bottom-8 left-8 right-8 bg-white shadow-2xl p-6 flex flex-col">
                <div className="space-y-4">
                  <div>
-                   <p className="text-[10px] text-gray-600 uppercase tracking-tighter mb-1">Featured</p>
-                   <p className="font-bold text-black text-lg">Everyday Premium Cotton</p>
+                   <p className="text-[10px] text-gray-600 uppercase tracking-tighter mb-1">Featured Outerwear</p>
+                   <p className="font-bold text-black text-lg">Tailored Burgundy Coat</p>
                  </div>
                  <button 
                    onClick={handleAddFeatured}
@@ -99,17 +99,17 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif text-black sm:text-4xl">Our Premium Cotton Clothing Collections</h2>
-            <p className="mt-4 text-lg text-gray-700">Find the perfect pure cotton outfits for every member of the family.</p>
+            <h2 className="text-3xl font-serif text-black sm:text-4xl">Featured Collections</h2>
+            <p className="mt-4 text-lg text-gray-700">Find the perfect cotton outfits for every member of the family.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Category 1 - Men's Collection (Replaced Structured 03 (5).png with local WebP) */}
+            {/* Category 1 - Men's Collection */}
             <NavLink to="/products" className="group relative overflow-hidden bg-white border border-gray-200 block">
               <div className="aspect-[3/4] w-full relative">
                 <img 
                   src="/images/home_mens.webp" 
-                  alt="Men's Cotton Clothing Collection" 
+                  alt="Men's Collection - everyday cotton essentials and smart casual wear" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   width={400}
                   height={533}
@@ -133,7 +133,7 @@ export default function Home() {
               <div className="aspect-[3/4] w-full relative">
                 <img 
                   src="/images/home_womens.webp" 
-                  alt="Women's Cotton Clothing Collection" 
+                  alt="Women's Collection - breezy cotton dresses and relaxed tops" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   width={400}
                   height={533}
@@ -144,7 +144,7 @@ export default function Home() {
               <div className="p-8 bg-white border-t border-gray-200">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-gray-700 mb-2">Women's Collection</h3>
                 <p className="text-gray-600 text-sm mb-4">
-                  Elegant dresses, relaxed tops, and modern organic cotton essentials.
+                  Elegant dresses, relaxed tops, and modern cotton essentials.
                 </p>
                 <div className="flex items-center text-sm font-bold underline underline-offset-4 text-black">
                   Shop Women <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
@@ -157,7 +157,7 @@ export default function Home() {
               <div className="aspect-[3/4] w-full relative">
                 <img 
                   src="/images/home_kids.webp" 
-                  alt="Kids' Cotton Clothing Collection" 
+                  alt="Kids' Collection - soft, durable, and playful cotton clothes" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   width={400}
                   height={533}
@@ -168,7 +168,7 @@ export default function Home() {
               <div className="p-8 bg-white border-t border-gray-200">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-gray-700 mb-2">Kids' Collection</h3>
                 <p className="text-gray-600 text-sm mb-4">
-                  Soft, durable, and playful organic cotton apparel designed for active kids.
+                  Soft, durable, and playful cotton clothes for all-day comfort.
                 </p>
                 <div className="flex items-center text-sm font-bold underline underline-offset-4 text-black">
                   Shop Kids <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
@@ -183,7 +183,7 @@ export default function Home() {
       <section className="py-24 bg-gray-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif text-black">Why Choose Our Cotton Clothing Brand</h2>
+            <h2 className="text-3xl font-serif text-black">Why Choose CottonCanvas</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -226,7 +226,7 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif text-black">Reviews of Our Organic Cotton Clothing</h2>
+            <h2 className="text-3xl font-serif text-black">What Our Customers Say</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -285,9 +285,9 @@ export default function Home() {
       <section className="py-24 bg-black text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[10px] font-bold uppercase tracking-[.3em] opacity-60 mb-2">Join Our Community</p>
-          <h2 className="text-3xl font-serif leading-tight mb-4">Stay Updated on New Cotton Clothing Trends</h2>
+          <h2 className="text-3xl font-serif leading-tight mb-4">Stay in Touch</h2>
           <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto opacity-80">
-            Receive exclusive offers, fashion tips, and early access to new collections.
+            Subscribe to our newsletter for exclusive updates, new arrivals, and special offers.
           </p>
           <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row max-w-md mx-auto gap-3">
             <label htmlFor="home-newsletter-email" className="sr-only">Email Address for Newsletter</label>

@@ -178,15 +178,15 @@ const productRatings: Record<number, { rating: number; count: number; reviews: {
       {
         author: "Rahul Sharma",
         date: "2026-04-04",
-        title: "Superb Everyday T-Shirt",
-        body: "Premium heavy cotton weave with zero color fade or shrinkage after multiple washes.",
+        title: "The perfect everyday white tee",
+        body: "Ultra-soft 100% organic cotton, excellent crew-neck collar that holds its shape wash after wash.",
         rating: 5
       },
       {
         author: "Neha Kapoor",
         date: "2026-05-18",
-        title: "Breathable and soft",
-        body: "Best cotton tee I have owned in years. Skin friendly and very durable.",
+        title: "Breathable and well-crafted",
+        body: "Clean minimalist design, lightweight breathable cotton fabric, and premium everyday comfort.",
         rating: 5
       }
     ]
@@ -198,15 +198,15 @@ const productRatings: Record<number, { rating: number; count: number; reviews: {
       {
         author: "Priya Sharma",
         date: "2026-06-06",
-        title: "Comfortable cotton hoodie",
-        body: "Excellent fleece lining and modern drape. Highly recommended!",
+        title: "Comfortable everyday set",
+        body: "The ribbed knit sweater and jeans make a stylish, cozy everyday outfit.",
         rating: 5
       },
       {
         author: "Karan Johar",
         date: "2026-06-20",
         title: "Warm and stylish",
-        body: "Great fit for layering over t-shirts in chillier weather.",
+        body: "Soft chunky knit texture and classic blue jeans make for an effortless look.",
         rating: 5
       }
     ]
@@ -218,8 +218,8 @@ const productRatings: Record<number, { rating: number; count: number; reviews: {
       {
         author: "Aarushi Verma",
         date: "2026-05-12",
-        title: "Effortlessly elegant",
-        body: "Flowy fit and pure lightweight cotton makes this ideal for warm sunny days.",
+        title: "Stunning maxi dress",
+        body: "Vibrant cherry red shade with an elegant floor-length silhouette and pleated waist.",
         rating: 5
       }
     ]
@@ -231,8 +231,8 @@ const productRatings: Record<number, { rating: number; count: number; reviews: {
       {
         author: "Vikram Malhotra",
         date: "2026-04-10",
-        title: "Heavy-duty organic denim",
-        body: "The wash and craftsmanship are top notch. Reinforced seams and timeless look.",
+        title: "Durable cotton denim jacket",
+        body: "The light wash and craftsmanship are top notch. Sturdy metal buttons, great fit, and perfect for layering.",
         rating: 5
       }
     ]
@@ -245,7 +245,7 @@ const productRatings: Record<number, { rating: number; count: number; reviews: {
         author: "Meera Nair",
         date: "2026-06-01",
         title: "Gentle on sensitive skin",
-        body: "Bought this for my 6-year-old. Chemical-free organic cotton is wonderful.",
+        body: "Bought this for my 6-year-old. Soft cotton is wonderful.",
         rating: 5
       }
     ]
@@ -257,34 +257,8 @@ const productRatings: Record<number, { rating: number; count: number; reviews: {
       {
         author: "Amit Roy",
         date: "2026-05-24",
-        title: "Ultimate lounge joggers",
-        body: "Extremely comfortable waistband and breathable fleece interior.",
-        rating: 5
-      }
-    ]
-  },
-  7: {
-    rating: 5.0,
-    count: 9,
-    reviews: [
-      {
-        author: "Zoya Akhtar",
-        date: "2026-03-29",
-        title: "Luxurious linen drape",
-        body: "Impeccable tailor finish. Pure flax linen that turns heads everywhere.",
-        rating: 5
-      }
-    ]
-  },
-  8: {
-    rating: 4.9,
-    count: 16,
-    reviews: [
-      {
-        author: "Harsh Kaur",
-        date: "2026-04-21",
-        title: "Stylish and Comfortable",
-        body: "Beautiful ribbed texture, genuine shell buttons, and excellent softness.",
+        title: "Stylish cargo and crop set",
+        body: "Great fit on the high-waisted cargo pants and very comfortable ribbed crop top.",
         rating: 5
       }
     ]
