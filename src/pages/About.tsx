@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { SEO } from '../components/SEO';
 import { getOrganizationSchema, getBreadcrumbSchema, BASE_URL } from '../utils/schemaGenerator';
 
@@ -8,22 +7,22 @@ export default function About() {
     {
       name: "Aanya Sharma",
       role: "Founder & CEO",
-      image: "https://i.pinimg.com/736x/f9/5d/6c/f95d6c9f9856209beae46a8e05a27384.jpg"
+      image: "/images/team1.webp"
     },
     {
       name: "Rohan Kapoor",
       role: "Creative Director",
-      image: "https://static.vecteezy.com/system/resources/thumbnails/034/598/907/small_2x/ai-generative-happy-business-man-in-a-suit-white-background-free-photo.jpg"
+      image: "/images/team2.webp"
     },
     {
       name: "Sneha Iyer",
       role: "Head of Product Development",
-      image: "https://rukminim2.flixcart.com/image/480/640/xif0q/shirt/a/g/w/l-shirtformal-ladyshop-original-imahjrf7p9wjh7wy.jpeg?q=20"
+      image: "/images/team3.webp"
     },
     {
       name: "Devendra Patel",
       role: "Customer Experience Manager",
-      image: "https://t4.ftcdn.net/jpg/06/38/86/99/360_F_638869953_rdcWeINcRcNpWRlHdQo30EWmpzYe0h9W.jpg"
+      image: "/images/team4.webp"
     }
   ];
 
@@ -40,7 +39,7 @@ export default function About() {
           "@type": "Person",
           "name": member.name,
           "jobTitle": member.role,
-          "image": member.image
+          "image": member.image.startsWith('http') ? member.image : `${BASE_URL}${member.image}`
         }))
       }
     },
@@ -61,21 +60,12 @@ export default function About() {
       {/* Hero */}
       <section className="bg-gray-50 py-24 border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-[10px] uppercase tracking-[.3em] font-bold text-black mb-4"
-          >
+          <p className="text-[10px] uppercase tracking-[.3em] font-bold text-black mb-4">
             Organic Integrity. Pure Design.
-          </motion.p>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl font-serif text-black mb-6"
-          >
+          </p>
+          <h1 className="text-5xl font-serif text-black mb-6">
             The Benefits of Organic Cotton Clothing
-          </motion.h1>
+          </h1>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto mt-4 leading-relaxed font-light">
             Discover why our signature cotton apparel stands at the intersection of everyday skin comfort and ecological responsibility.
           </p>
@@ -90,7 +80,7 @@ export default function About() {
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(#000 1px, transparent 0)", backgroundSize: "20px 20px" }}></div>
               <div className="aspect-[4/3] overflow-hidden border border-gray-200 relative z-10 bg-white p-4 shadow-sm">
                 <img 
-                  src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1200&h=900&fm=png&q=80" 
+                  src="/images/about_manufacturing.webp" 
                   alt="A raw demonstration of ethical clothing production focusing on organic textiles" 
                   className="object-cover w-full h-full"
                   width={1200}
@@ -116,37 +106,23 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission Vision Values */}
+      {/* Values */}
       <section className="py-24 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 mb-24 border-b border-gray-800 pb-20">
-            <div className="p-8 border border-gray-800">
-              <h3 className="text-xl font-serif mb-4 flex items-center gap-4"><span className="text-[10px] font-sans opacity-50 tracking-widest">01</span> Benefits of Pure Cotton Clothing</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Beyond its premium softness, one of the leading <strong>benefits of organic cotton clothing</strong> is its hypoallergenic footprint—free from synthetic chemicals, preserving soil health, and using significantly less water than standard fabrics.
-              </p>
-            </div>
-            <div className="p-8 border border-gray-800">
-              <h3 className="text-xl font-serif mb-4 flex items-center gap-4"><span className="text-[10px] font-sans opacity-50 tracking-widest">02</span> Our Sustainable Vision</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                To become a leading name recognized for showing how organic cotton clothing is made, setting new benchmarks for premium craftsmanship, ecological responsibility, and exceptional customer experience.
-              </p>
-            </div>
+          <div className="text-center mb-16">
+            <p className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-3">Principles</p>
+            <h2 className="text-3xl font-serif">What Drives Us Forward</h2>
           </div>
 
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif text-white">Our Brand Core Values</h2>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center p-8 bg-gray-900 border border-white/10 hover:bg-gray-800 transition-colors">
               <div className="text-[10px] opacity-50 font-bold uppercase tracking-widest mb-4">Core 1</div>
-              <h4 className="text-lg font-bold mb-3">Quality First</h4>
-              <p className="text-gray-300 text-sm leading-relaxed">Every garment is carefully designed and rigorously inspected.</p>
+              <h4 className="text-lg font-bold mb-3">Quality Craft</h4>
+              <p className="text-gray-300 text-sm leading-relaxed">We source pure, long-staple cotton threads to produce soft and durable garments.</p>
             </div>
             <div className="text-center p-8 bg-gray-900 border border-white/10 hover:bg-gray-800 transition-colors">
               <div className="text-[10px] opacity-50 font-bold uppercase tracking-widest mb-4">Core 2</div>
-              <h4 className="text-lg font-bold mb-3">Sustainability</h4>
+              <h4 className="text-lg font-bold mb-3">Eco-Friendly</h4>
               <p className="text-gray-300 text-sm leading-relaxed">We strive to reduce environmental impact through responsible sourcing.</p>
             </div>
             <div className="text-center p-8 bg-gray-900 border border-white/10 hover:bg-gray-800 transition-colors">
@@ -178,10 +154,11 @@ export default function About() {
                   <img 
                     src={member.image} 
                     alt={member.name} 
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     width={300}
                     height={400}
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <h3 className="font-bold text-black uppercase tracking-widest text-sm mb-1">{member.name}</h3>

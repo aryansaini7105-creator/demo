@@ -317,6 +317,7 @@ export default function CheckoutModal() {
                                 width={48}
                                 height={64}
                                 loading="lazy"
+                                decoding="async"
                               />
                             )}
                           </div>

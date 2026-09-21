@@ -60,6 +60,7 @@ export default function Cart() {
                           width={80}
                           height={96}
                           loading="lazy"
+                          decoding="async"
                         />
                       )}
                     </div>

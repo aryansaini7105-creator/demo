@@ -11,7 +11,7 @@ export interface SEOProps {
   noindex?: boolean;
 }
 
-const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&h=630&q=80";
+const DEFAULT_IMAGE = "/images/home_hero.webp";
 const SITE_NAME = "CottonCanvas";
 const DEFAULT_ORIGIN = "https://cottoncanvascloths.vercel.app";
 
@@ -85,7 +85,8 @@ export function SEO({
     setOrCreateMeta('meta[property="og:description"]', 'property', 'og:description', description);
     setOrCreateMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
     setOrCreateMeta('meta[property="og:type"]', 'property', 'og:type', type);
-    setOrCreateMeta('meta[property="og:image"]', 'property', 'og:image', image);
+    const ogImage = image.startsWith('http') ? image : `${origin}${image.startsWith('/') ? image : `/${image}`}`;
+    setOrCreateMeta('meta[property="og:image"]', 'property', 'og:image', ogImage);
     setOrCreateMeta('meta[property="og:site_name"]', 'property', 'og:site_name', SITE_NAME);
     setOrCreateMeta('meta[property="og:locale"]', 'property', 'og:locale', 'en_US');
 
@@ -93,7 +94,7 @@ export function SEO({
     setOrCreateMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
     setOrCreateMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
     setOrCreateMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
-    setOrCreateMeta('meta[name="twitter:image"]', 'name', 'twitter:image', image);
+    setOrCreateMeta('meta[name="twitter:image"]', 'name', 'twitter:image', ogImage);
     setOrCreateMeta('meta[name="twitter:site"]', 'name', 'twitter:site', '@cottoncanvas');
   }, [title, description, canonical, type, image, keywords, noindex]);
 

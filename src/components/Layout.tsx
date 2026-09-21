@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { ShoppingBag, Menu, X, Facebook, Twitter, Instagram, CheckCircle } from 'lucide-react';
 import { useCart } from '../CartContext';
-import Cart from './Cart';
-import CheckoutModal from './CheckoutModal';
+
+const Cart = React.lazy(() => import('./Cart'));
+const CheckoutModal = React.lazy(() => import('./CheckoutModal'));
 
 export default function Layout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -169,8 +170,10 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <Cart />
-      <CheckoutModal />
+      <React.Suspense fallback={null}>
+        <Cart />
+        <CheckoutModal />
+      </React.Suspense>
 
       {/* Login / Customer Modal */}
       {showLoginModal && (

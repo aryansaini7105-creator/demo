@@ -193,6 +193,8 @@ export default function Blog() {
                   src={selectedPost.image} 
                   alt={selectedPost.title} 
                   className="w-full h-full object-cover"
+                  width={800}
+                  height={450}
                   loading="lazy"
                   decoding="async"
                 />

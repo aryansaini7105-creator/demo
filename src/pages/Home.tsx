@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ArrowRight, Leaf, ShieldCheck, Truck, Tag } from 'lucide-react';
-import { motion } from 'motion/react';
 import { useCart } from '../CartContext';
 import { SEO } from '../components/SEO';
 import FAQSection from '../components/FAQSection';
@@ -17,7 +16,7 @@ export default function Home() {
       id: 999,
       name: "Everyday Premium Cotton",
       price: 2999,
-      image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=400&h=300&fm=webp&q=70"
+      image: "/images/home_hero.webp"
     });
     setAddedFeatured(true);
     setTimeout(() => setAddedFeatured(false), 1500);
@@ -40,12 +39,7 @@ export default function Home() {
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden flex flex-col lg:flex-row items-stretch border-b border-gray-200">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="lg:w-3/5 p-8 md:p-16 flex flex-col justify-center gap-8"
-        >
+        <div className="lg:w-3/5 p-8 md:p-16 flex flex-col justify-center gap-8">
           <div className="space-y-4">
             <span className="inline-block px-3 py-1 bg-black text-white text-[10px] font-bold uppercase tracking-[.3em]">Premium Essentials</span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-black">
@@ -69,24 +63,17 @@ export default function Home() {
               Explore Collection
             </NavLink>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:w-2/5 p-8 md:p-12 relative bg-gray-50 min-h-[500px]"
-        >
+        <div className="lg:w-2/5 p-8 md:p-12 relative bg-gray-50 min-h-[500px]">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(#000 1px, transparent 0)", backgroundSize: "20px 20px" }}></div>
           <div className="h-full border border-gray-200 relative z-10 flex flex-col justify-center items-center overflow-hidden bg-gray-100">
              <img 
-               src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=75" 
-               srcSet="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=75 800w"
-               sizes="(max-width: 640px) 480px, 800px"
+               src="/images/home_hero.webp" 
                fetchPriority="high"
                decoding="async"
                alt="A woman modeling sustainable clothing brands premium organic cotton clothing" 
-               className="object-cover w-full h-full opacity-90 transition-all duration-700 hover:scale-105"
+               className="object-cover w-full h-full opacity-90 transition-transform duration-500 hover:scale-105"
                width={800}
                height={1000}
              />
@@ -105,7 +92,7 @@ export default function Home() {
                </div>
              </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Featured Categories */}
@@ -117,13 +104,13 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Category 1 */}
+            {/* Category 1 - Men's Collection (Replaced Structured 03 (5).png with local WebP) */}
             <NavLink to="/products" className="group relative overflow-hidden bg-white border border-gray-200 block">
               <div className="aspect-[3/4] w-full relative">
                 <img 
-                  src="https://textile-export.b-cdn.net/images/800/20231101/16988319171647512920-Structured%2003%20(5).png" 
+                  src="/images/home_mens.webp" 
                   alt="Men's Cotton Clothing Collection" 
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   width={400}
                   height={533}
                   loading="lazy"
@@ -141,14 +128,13 @@ export default function Home() {
               </div>
             </NavLink>
 
-            {/* Category 2 */}
+            {/* Category 2 - Women's Collection */}
             <NavLink to="/products" className="group relative overflow-hidden bg-white border border-gray-200 block">
               <div className="aspect-[3/4] w-full relative">
                 <img 
-                  src="https://kavyastyleplus.com/cdn/shop/collections/Crown_20Sayuri_20Indo_20Western_20Pair_20_282_29.jpg?v=1756291988&width=400" 
+                  src="/images/home_womens.webp" 
                   alt="Women's Cotton Clothing Collection" 
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   width={400}
                   height={533}
                   loading="lazy"
@@ -166,14 +152,13 @@ export default function Home() {
               </div>
             </NavLink>
 
-            {/* Category 3 */}
+            {/* Category 3 - Kids' Collection */}
             <NavLink to="/products" className="group relative overflow-hidden bg-white border border-gray-200 block">
               <div className="aspect-[3/4] w-full relative">
                 <img 
-                  src="https://www.suratsuit.in/product-img/Kid-s-Clothing-Set-Baba-Suit-B-1688391083.jpeg" 
+                  src="/images/home_kids.webp" 
                   alt="Kids' Cotton Clothing Collection" 
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   width={400}
                   height={533}
                   loading="lazy"

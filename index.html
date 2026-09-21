@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://cottoncanvascloths.vercel.app/" />
     <meta property="og:title" content="CottonCanvas — Premium Sustainable Cotton Clothing" />
     <meta property="og:description" content="A premium cotton apparel clothing website with home, about us, products, blog, and contact pages." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&h=630&q=80" />
+    <meta property="og:image" content="https://cottoncanvascloths.vercel.app/images/home_hero.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="CottonCanvas Premium Sustainable Cotton Clothing Collection" />
@@ -29,41 +29,43 @@
     <meta name="twitter:creator" content="@cottoncanvas" />
     <meta name="twitter:title" content="CottonCanvas — Premium Sustainable Cotton Clothing" />
     <meta name="twitter:description" content="A premium cotton apparel clothing website with home, about us, products, blog, and contact pages." />
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&h=630&q=80" />
+    <meta name="twitter:image" content="https://cottoncanvascloths.vercel.app/images/home_hero.webp" />
 
     <!-- Favicon & PWA Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.json" />
 
-    <!-- Preconnect to Google Fonts and external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
+    <!-- Preload Local Fonts for Instant Typography (Zero Layout Shift) -->
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Google Fonts with swap and non-blocking load -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
-    </noscript>
+    <!-- Preload LCP Hero Image for Maximum SpeedScore -->
+    <link rel="preload" fetchpriority="high" as="image" type="image/webp" href="/images/home_hero.webp" />
 
-    <!-- Preload LCP Hero Image for 100 performance scores on both mobile and desktop -->
-    <link rel="preload" fetchpriority="high" as="image" href="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=75" imagesrcset="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=75 800w" imagesizes="(max-width: 640px) 480px, 800px" />
-
-    <!-- Non-render-blocking Analytics (Google Tag Manager & Meta Pixel) -->
+    <!-- Deferred Non-render-blocking Analytics (Google Tag Manager & Meta Pixel) -->
     <script>
       (function() {
+        var analyticsLoaded = false;
         function loadAnalytics() {
+          if (analyticsLoaded) return;
+          analyticsLoaded = true;
+
+          // Remove interaction listeners
+          ['scroll', 'touchstart', 'click', 'mousemove', 'keydown'].forEach(function(evt) {
+            window.removeEventListener(evt, loadAnalytics, { passive: true });
+          });
+
           // Google Tag Manager
           try {
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.defer=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-MMWJ2NVM');
           } catch(e) {}
 
-          // Meta Pixel Code
+          // Meta / Facebook Pixel
           try {
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -78,11 +80,20 @@
           } catch(e) {}
         }
 
-        if (document.readyState === 'complete') {
-          setTimeout(loadAnalytics, 1500);
+        // Trigger on first interaction or background idle fallback (4 seconds)
+        ['scroll', 'touchstart', 'click', 'mousemove', 'keydown'].forEach(function(evt) {
+          window.addEventListener(evt, loadAnalytics, { once: true, passive: true });
+        });
+
+        if ('requestIdleCallback' in window) {
+          window.addEventListener('load', function() {
+            requestIdleCallback(function() {
+              setTimeout(loadAnalytics, 4000);
+            }, { timeout: 6000 });
+          });
         } else {
           window.addEventListener('load', function() {
-            setTimeout(loadAnalytics, 1500);
+            setTimeout(loadAnalytics, 4000);
           });
         }
       })();
@@ -106,7 +117,7 @@
             "height": 512,
             "caption": "CottonCanvas Brand Logo"
           },
-          "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&h=630&q=80",
+          "image": "https://cottoncanvascloths.vercel.app/images/home_hero.webp",
           "description": "CottonCanvas is a premier sustainable organic cotton apparel brand crafting everyday minimalist tees, durable jackets, and luxurious pure cotton essentials.",
           "email": "aryansaini7105@gmail.com",
           "telephone": "+917988227604",
